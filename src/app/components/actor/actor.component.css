@@ -81,7 +81,6 @@
   .recommended-poster::ng-deep .movie-card .mat-card-title{  font-size: 20px !important  }
 }
 
-/* Landscape tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1200px) {
   .recommended-poster::ng-deep .movie-card{  width: 23%; margin: 10px 5px 20px 5px; }
 }
