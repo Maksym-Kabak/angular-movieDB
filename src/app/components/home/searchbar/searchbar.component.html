@@ -1,0 +1,19 @@
+<div class="search-bar">
+  <input type='search'
+         name="search"
+         placeholder='' [(ngModel)]="term" [value]="term "
+         (ngModelChange)="valueChange()" autoCapitalize='on' spellCheck='false' #input
+         pattern=".*\S.*" required
+         autocomplete="off"
+  />
+  <button class="search-btn" type="submit">
+    <span>Search</span>
+  </button>
+  <div class="bg-gray">
+    <ul>
+      <app-search-results *ngFor="let movie of searchMovies" [movie]="movie" (cleanInput)="cleanInput()">
+      </app-search-results>
+    </ul>
+  </div>
+</div>
+
