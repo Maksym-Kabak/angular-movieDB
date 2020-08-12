@@ -1,0 +1,10 @@
+<li class='border-b' (click)="onCleanInput()">
+  <a
+    [routerLink]="movie.media_type?(movie.media_type==='movie'?['/','movie',movie.id]:['/','tv-show',movie.id]):['/','movie',movie.id]"
+    class=' hover'>
+    <div class="w-8">
+      <img style="width: 2rem" src="https://image.tmdb.org/t/p/w92//{{movie.poster_path}}" alt="{{movie.title}}_poster"/>
+    </div>
+    <span class="ml-4">{{movie.name}} {{movie.title}}</span>
+  </a>
+</li>

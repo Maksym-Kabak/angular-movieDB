@@ -1,0 +1,24 @@
+.border-b {
+  border-bottom: 1px solid #4a5568;
+  list-style: none;
+}
+.w-8 {
+  width: 2rem;;
+}
+.ml-4{
+  margin-left: 1rem;
+}
+
+.hover{
+  display: flex;
+  padding: .75rem;
+  align-items: center;
+  box-sizing: border-box;
+  border: 0 solid #e2e8f0;
+  font-size: .875rem;
+}
+.hover:hover{
+  background-color: #4a5568;
+  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}

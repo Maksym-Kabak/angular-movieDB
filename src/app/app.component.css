@@ -1,0 +1,51 @@
+@import "~tailwindcss/dist/base.css";
+
+@import "~tailwindcss/dist/components.css";
+
+@import "~tailwindcss/dist/utilities.css";
+
+
+.transparent-bar {
+  position: absolute;
+  z-index: 999;
+  background: transparent;
+}
+
+
+
+mat-sidenav {
+  width: 250px;
+}
+
+.mat-nav-list{
+  padding-top: 0!important;
+}
+
+mat-nav-list a{
+  border-bottom: 1px solid;
+}
+
+.center-flex{
+  flex: 1 1 auto;
+}
+
+.home-name-padding {
+  padding-left: 70px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .janco-ocult{  display: none;  }
+  .home-name-padding {padding-left: 0;}
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .janco-ocult{  display: none;  }
+  .home-name-padding {padding-left: 0;}
+}
+
+

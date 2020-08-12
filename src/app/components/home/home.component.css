@@ -1,0 +1,68 @@
+@import "~tailwindcss/dist/base.css";
+
+@import "~tailwindcss/dist/components.css";
+@import "~tailwindcss/dist/utilities.css";
+
+::ng-deep .swiper-slide {
+  margin-top: 30px;
+}
+
+::ng-deep .swiper-pagination-bullets {
+  bottom: 0;
+}
+
+::ng-deep .swiper-pagination {
+  bottom: 0;
+  position: initial;
+}
+
+.moviesHome-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  margin-top: 45px;
+  margin-bottom: 0;
+}
+
+.moviesHome-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* =============
+    Responsive
+ =============== */
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+  ::ng-deep .movie-card{  width: 19%;  }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  ::ng-deep .movie-card{  width: 17%;  }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  ::ng-deep .movie-card{  width: 40%;  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  ::ng-deep .movie-card{  width: 38%;  }
+  .janco-ocult{  display: none;  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  ::ng-deep .movie-card{  width: 80%;  }
+  .janco-ocult{  display: none;  }
+}
+
+/**/
+
+/*::ng-deep .movie-card {*/
+/*  width: 80% !important;*/
+/*}*/

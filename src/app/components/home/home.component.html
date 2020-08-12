@@ -1,0 +1,103 @@
+<div class="container" id="home">
+
+  <section>
+    <header class="moviesHome-header">
+      <div class="moviesHome-title" style="color: white">In Theater</div>
+    </header>
+
+<!--    <div class="container px-10 py-6 m-auto flex flex-col md:flex-row justify-between items-center">-->
+<!--      <div class="flex items-center">-->
+<!--        <app-searchbar></app-searchbar>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <mat-tab-group (selectedTabChange)="changeTab()">
+
+      <!--Now Playing Movies-->
+      <mat-tab label="Now Playing Movies">
+        <div class="swiper-container" [swiper]="config">
+          <div class="swiper-wrapper">
+            <div *ngFor="let movie of nowPlaying | slice:0:10" class="swiper-slide">
+              <app-poster-card [model]="movie" style="width: 100%"></app-poster-card>
+            </div>
+          </div>
+          <div class="swiper-pagination" style=""></div>
+        </div>
+      </mat-tab>
+
+      <!--Upcoming Movies Tab-->
+      <mat-tab label="Upcomming Movies">
+        <div class="swiper-container" [swiper]="config">
+          <div class="swiper-wrapper">
+            <div *ngFor="let movie of upcomingList | slice:0:10" class="swiper-slide">
+              <app-poster-card [model]="movie"></app-poster-card>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </mat-tab>
+
+      <!--Popular Movies Tab-->
+      <mat-tab label="Popular Movies">
+        <div class="swiper-container" [swiper]="config">
+          <div class="swiper-wrapper">
+            <div *ngFor="let movie of popularList | slice:0:10" class="swiper-slide">
+              <app-poster-card [model]="movie"></app-poster-card>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </section>
+
+
+  <!--TV-->
+
+  <section>
+    <header class="moviesHome-header">
+      <div class="moviesHome-title" style="color: white">On TV</div>
+    </header>
+
+    <mat-tab-group (selectedTabChange)="changeTab()">
+
+      <!--Currently Airing TV Shows Tab-->
+      <mat-tab label="Currently Airing TV Shows">
+        <div class="swiper-container" [swiper]="config">
+          <div class="swiper-wrapper">
+            <div *ngFor="let tvShow of onTheAir | slice:0:10" class="swiper-slide">
+              <app-poster-card [model]="tvShow"></app-poster-card>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </mat-tab>
+
+      <!--Airing Today TV Shows Tab-->
+      <mat-tab label="Airing Today TV Shows">
+        <div class="swiper-container" [swiper]="config">
+          <div class="swiper-wrapper">
+            <div *ngFor="let tvShow of airingToday | slice:0:10" class="swiper-slide">
+              <app-poster-card [model]="tvShow"></app-poster-card>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </mat-tab>
+
+      <!--Popular TV Shows Tab-->
+      <mat-tab label="Popular TV Shows">
+        <div class="swiper-container" [swiper]="config">
+          <div class="swiper-wrapper">
+            <div *ngFor="let tvShow of popularTvShows | slice:0:10" class="swiper-slide">
+              <app-poster-card [model]="tvShow"></app-poster-card>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+  </section>
+</div>
