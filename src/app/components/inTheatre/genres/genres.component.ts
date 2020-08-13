@@ -13,6 +13,7 @@ export class GenresComponent implements OnInit {
 
   title: string;
   movies: PaginatorModel[];
+  isLoading = true;
 
   constructor(
     private moviesService: MoviesService,
@@ -32,6 +33,11 @@ export class GenresComponent implements OnInit {
     const moviesByGenre = this.moviesService.getMoviesByGenre(id).subscribe(
       res => {
         this.movies = res.results;
+        if (!this.movies) {
+          alert('Server Error');
+        } else {
+          this.isLoading = false;
+        }
         this.movies.forEach(np => np[`isMovie`] = true);
       }, error => console.log(error),
       () => {

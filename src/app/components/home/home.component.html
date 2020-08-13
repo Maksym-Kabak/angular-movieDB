@@ -1,6 +1,6 @@
-<div class="container" id="home">
+<div class="container" id="home" *ngIf="nowPlaying">
 
-  <section>
+  <section >
     <header class="moviesHome-header">
       <div class="moviesHome-title" style="color: white">In Theater</div>
     </header>
@@ -26,9 +26,10 @@
       </mat-tab>
 
       <!--Upcoming Movies Tab-->
-      <mat-tab label="Upcomming Movies">
+      <mat-tab label="Upcomming Movies"  >
         <div class="swiper-container" [swiper]="config">
           <div class="swiper-wrapper">
+
             <div *ngFor="let movie of upcomingList | slice:0:10" class="swiper-slide">
               <app-poster-card [model]="movie"></app-poster-card>
             </div>
@@ -100,4 +101,10 @@
 
     </mat-tab-group>
   </section>
+</div>
+
+<div *ngIf="isLoading" style="margin-top: 30%">
+  <div class="loading">
+    <h4>Loading</h4>
+  </div>
 </div>

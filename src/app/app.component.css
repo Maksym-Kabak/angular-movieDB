@@ -11,7 +11,9 @@
   background: transparent;
 }
 
-
+.active-route {
+  color: #efd518;
+}
 
 mat-sidenav {
   width: 250px;

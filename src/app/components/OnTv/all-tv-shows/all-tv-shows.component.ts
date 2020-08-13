@@ -10,14 +10,9 @@ import {PaginatorModel} from '../../../models/paginator.model';
 })
 export class AllTvShowsComponent implements OnInit {
 
-  onTheAir: Array<PaginatorModel> = [];
+  onTheAir: PaginatorModel[];
   genres: GenresListModel;
-  max = 10;
-  min = 0;
-  step = 1;
-  value = 0;
-  thumbLabel = true;
-  tickInterval = 10;
+  isLoading = true;
   totalResults: any;
 
   constructor(private onTvService: OnTvService) {
@@ -33,6 +28,11 @@ export class AllTvShowsComponent implements OnInit {
       res => {
         this.totalResults = res.total_results;
         this.onTheAir = res.results;
+        if (!this.totalResults) {
+          alert('Server Error');
+        } else {
+          this.isLoading = false;
+        }
         this.onTheAir.forEach(np => np[`isMovie`] = false);
       }, error => console.log(error),
       () => {

@@ -1,81 +1,88 @@
-<div class="padding-top-60 container" style=" display: flex;">
-  <div style="width: 25%">
-    <mat-card class="actor-card">
-      <img src="https://image.tmdb.org/t/p/w300/{{person.profile_path}}" *ngIf="person.profile_path" alt="lol">
-      <mat-card-content>
-        <h2>Personal Info</h2>
-        <p>
-          <strong>Gender: </strong>
-          <span *ngIf="person.gender == 2">Male</span>
-          <span *ngIf="person.gender == 1">Female</span>
-        </p>
-        <p><strong>Birthday: </strong>
-          {{person.birthday}}</p>
-        <p><strong>Place of Birth: </strong>{{person.place_of_birth}}</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<div *ngIf="movies">
+  <div class="padding-top-60 container" style=" display: flex;">
+    <div style="width: 25%">
+      <mat-card class="actor-card">
+        <img src="https://image.tmdb.org/t/p/w300/{{person.profile_path}}" *ngIf="person.profile_path" alt="lol">
+        <mat-card-content>
+          <h2>Personal Info</h2>
+          <p>
+            <strong>Gender: </strong>
+            <span *ngIf="person.gender == 2">Male</span>
+            <span *ngIf="person.gender == 1">Female</span>
+          </p>
+          <p><strong>Birthday: </strong>
+            {{person.birthday}}</p>
+          <p><strong>Place of Birth: </strong>{{person.place_of_birth}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
 
-  <div style="width: 80%">
+    <div style="width: 80%">
 
-    <mat-card class="actor-card-bio" style="width: 100%; margin-bottom: 0;">
-      <mat-card-content>
-        <div class="actor-title" dir="auto">
-          <h2>{{person.name}}</h2>
-        </div>
-        <div>
-          <h3 style="text-align: left">Biography</h3>
-          <div class="biography">
-            <p style="text-align: justify;">{{person.biography}}</p>
+      <mat-card class="actor-card-bio" style="width: 100%; margin-bottom: 0;">
+        <mat-card-content>
+          <div class="actor-title" dir="auto">
+            <h2>{{person.name}}</h2>
           </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+          <div>
+            <h3 style="text-align: left">Biography</h3>
+            <div class="biography">
+              <p style="text-align: justify;">{{person.biography}}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-    <mat-card class="actor-card-bio" style="width: 100%; margin-bottom: 0;">
-      <mat-card-content style="overflow: hidden !important;">
-        <mat-tab-group>
-          <mat-tab [label]="'Movies'">
+      <mat-card class="actor-card-bio" style="width: 100%; margin-bottom: 0;">
+        <mat-card-content style="overflow: hidden !important;">
+          <mat-tab-group>
+            <mat-tab [label]="'Movies'">
 
 
-            <div class="container">
-              <div *ngIf="movies" class="similar-movies">
-                <div style="text-align:center;">
+              <div class="container">
+                <div *ngIf="movies" class="similar-movies">
+                  <div style="text-align:center;">
                   <span *ngFor="let movie of movies;">
                     <app-poster-card [model]="movie" class="recommended-poster"></app-poster-card>
                   </span>
+                  </div>
                 </div>
               </div>
-            </div>
 
 
-          </mat-tab>
+            </mat-tab>
 
-          <mat-tab [label]="'Extra Info'">
-            <div class="actor-social-links" style="margin-top: 20px">
-              <div><a target="_blank" href="https://www.facebook.com/{{externalIds['facebook_id']}}">
-                <mat-icon
-                  class="fa fa-facebook-official" aria-hidden="true"></mat-icon>
-                Facebook</a>
-              </div>
-              <div>
-                <a target="_blank" href="https://twitter.com/{{externalIds['twitter_id']}}">
+            <mat-tab [label]="'Extra Info'">
+              <div class="actor-social-links" style="margin-top: 20px">
+                <div><a target="_blank" href="https://www.facebook.com/{{externalIds['facebook_id']}}">
                   <mat-icon
-                    class="fa fa-twitter-square" aria-hidden="true"></mat-icon>
-                  Twitter</a>
+                    class="fa fa-facebook-official" aria-hidden="true"></mat-icon>
+                  Facebook</a>
+                </div>
+                <div>
+                  <a target="_blank" href="https://twitter.com/{{externalIds['twitter_id']}}">
+                    <mat-icon
+                      class="fa fa-twitter-square" aria-hidden="true"></mat-icon>
+                    Twitter</a>
+                </div>
+                <div>
+                  <a target="_blank" href="https://www.instagram.com/{{externalIds['instagram_id']}}">
+                    <mat-icon
+                      class="fa fa-instagram" aria-hidden="true">Instagram
+                    </mat-icon>
+                  </a>
+                </div>
               </div>
-              <div>
-                <a target="_blank" href="https://www.instagram.com/{{externalIds['instagram_id']}}">
-                  <mat-icon
-                    class="fa fa-instagram" aria-hidden="true">Instagram
-                  </mat-icon>
-                </a>
-              </div>
-            </div>
-          </mat-tab>
-        </mat-tab-group>
-      </mat-card-content>
-    </mat-card>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>
 
+<div *ngIf="isLoading" style="margin-top: 30%">
+  <div class="loading">
+    <h4>Loading</h4>
+  </div>
+</div>

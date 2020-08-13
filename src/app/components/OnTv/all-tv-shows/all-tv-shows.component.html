@@ -1,3 +1,4 @@
+<div *ngIf="totalResults">
 <div class="container padding-top-60" fxLayout='column'>
 
   <h2 fxFlex="100%" style="text-align: left; padding-left: 20px;">All TV Shows #CurrentlyAiring</h2>
@@ -31,5 +32,12 @@
                      (page)="changePage($event)">
       </mat-paginator>
     </div>
+  </div>
+</div>
+</div>
+
+<div *ngIf="isLoading" style="margin-top: 30%">
+  <div class="loading">
+    <h4>Loading</h4>
   </div>
 </div>

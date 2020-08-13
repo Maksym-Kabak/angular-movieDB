@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   onTheAir: PaginatorModel[];
   airingToday: PaginatorModel[];
   popularTvShows: PaginatorModel[];
-
+  isLoading = true;
   config: SwiperConfigInterface = {};
 
   @ViewChild(SwiperComponent, {static: false}) componentRef: SwiperComponent;
@@ -52,43 +52,46 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.config = {
-        direction: `horizontal`,
-        slidesPerView: 4,
-        navigation: true,
-        pagination: {
-          el: `.swiper-pagination`,
-          clickable: true,
-          hideOnClick: true
+    this.config = {
+      direction: `horizontal`,
+      slidesPerView: 4,
+      navigation: true,
+      pagination: {
+        el: `.swiper-pagination`,
+        clickable: true,
+        hideOnClick: true
+      },
+      breakpoints: {
+        1199: {
+          slidesPerView: 4,
+          spaceBetween: 20,
         },
-        breakpoints: {
-          1199: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-          },
-          991: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          767: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          480: {
-            slidesPerView: 1,
-            spaceBetween: 0,
-          }
+        991: {
+          slidesPerView: 2,
+          spaceBetween: 20,
         },
-        spaceBetween: 20
-      };
-    }, 50);
+        767: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        }
+      },
+      spaceBetween: 20
+    };
   }
 
 
   getNowPlayingMovies(page: number): void {
     this.moviesService.getNowPlaying(page).subscribe(res => {
       this.nowPlaying = res.results;
+      if (!this.nowPlaying) {
+        alert('Server Error');
+      } else {
+        this.isLoading = false;
+      }
       this.nowPlaying.forEach(np => np[`isMovie`] = true);
     });
   }
@@ -138,37 +141,35 @@ export class HomeComponent implements OnInit, AfterViewInit {
       res => {
         this.onTheAir = res.results;
         this.onTheAir.forEach(np => np[`isMovie`] = false);
-        setTimeout(() => {
-          this.config = {
-            direction: `horizontal`,
-            slidesPerView: 4,
-            navigation: true,
-            pagination: {
-              el: `.swiper-pagination`,
-              clickable: true,
-              hideOnClick: true
+        this.config = {
+          direction: `horizontal`,
+          slidesPerView: 4,
+          navigation: true,
+          pagination: {
+            el: `.swiper-pagination`,
+            clickable: true,
+            hideOnClick: true
+          },
+          breakpoints: {
+            1199: {
+              slidesPerView: 4,
+              spaceBetween: 20,
             },
-            breakpoints: {
-              1199: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-              },
-              991: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              767: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              480: {
-                slidesPerView: 1,
-                spaceBetween: 0,
-              }
+            991: {
+              slidesPerView: 2,
+              spaceBetween: 20,
             },
-            spaceBetween: 20
-          };
-        }, 100);
+            767: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            480: {
+              slidesPerView: 1,
+              spaceBetween: 0,
+            }
+          },
+          spaceBetween: 20
+        };
       },
       error => console.log(error)
     );

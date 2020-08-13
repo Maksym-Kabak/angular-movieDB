@@ -14,6 +14,7 @@ export class AllMoviesComponent implements OnInit {
 
   nowPlaying: PaginatorModel[];
   genres: GenresListModel;
+  isLoading = true;
 
 
   totalResults: any;
@@ -35,7 +36,13 @@ export class AllMoviesComponent implements OnInit {
       res => {
         this.totalResults = res.total_results;
         this.nowPlaying = res.results;
+        if (!this.nowPlaying) {
+          alert('Server Error');
+        } else {
+          this.isLoading = false;
+        }
         this.nowPlaying.forEach(np => np[`isMovie`] = true);
+
       }, () => {
       },
       () => {

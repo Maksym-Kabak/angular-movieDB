@@ -14,6 +14,7 @@ export class ActorComponent implements OnInit {
   movies: MovieModel[];
   // tslint:disable-next-line:ban-types
   externalIds: Object = {};
+  isLoading = true;
 
   constructor(
     private moviesService: MoviesService,
@@ -27,9 +28,19 @@ export class ActorComponent implements OnInit {
       this.moviesService.getPersonDetail(id).subscribe(person => {
         this.person = person;
         console.log(person);
+        if (!this.person) {
+          alert('Server Error');
+        } else {
+          this.isLoading = false;
+        }
       }, error => console.log(error));
       this.moviesService.getPersonCast(id).subscribe(res => {
         this.movies = res.cast;
+        if (!this.movies) {
+          alert('Server Error');
+        } else {
+          this.isLoading = false;
+        }
         this.movies.forEach(np => np[`isMovie`] = true);
       }, error => console.log(error));
 
@@ -39,6 +50,4 @@ export class ActorComponent implements OnInit {
       }, error => console.log(error));
     });
   }
-
-
 }

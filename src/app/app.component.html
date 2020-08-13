@@ -6,19 +6,19 @@
           <div class='flex items-center'>
             <li><a
               class="pr-4 mt-0 md:ml-10 text-white hover:text-gray-300 transition ease-in duration-200 font-medium cursor-pointer"
-              routerLink="/">Home</a>
+              routerLink="/" routerLinkActive="active-route" [routerLinkActiveOptions]="{exact:true}">Home</a>
             </li>
             <li
               class='pr-4 mt-0 md:ml-10 text-white hover:text-gray-300 transition ease-in duration-200 font-medium cursor-pointer'
-            ><a routerLink="/all-movies">Movies</a>
+            ><a routerLink="/all-movies" routerLinkActive="active-route">Movies</a>
             </li>
             <li
               class='pr-4  mt-0 text-white hover:text-gray-300 transition ease-in duration-200 font-medium cursor-pointer'
-            ><a routerLink="/all-tv-shows">TV-Show</a>
+            ><a routerLink="/all-tv-shows" routerLinkActive="active-route">TV-Show</a>
             </li>
             <li
               class='pr-4  mt-0 text-white hover:text-gray-300 transition ease-in duration-200 font-medium cursor-pointer'
-            ><a routerLink="/genres">Genres</a>
+            ><a routerLink="/genres" routerLinkActive="active-route">Genres</a>
             </li>
             <div class="flex items-center">
               <app-searchbar></app-searchbar>
