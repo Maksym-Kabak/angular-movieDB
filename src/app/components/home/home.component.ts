@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.upcomingList.forEach(np => np[`isMovie`] = true);
     });
 
-    this.moviesService.getTopRatedMovies().subscribe(res => {
+    this.moviesService.getTopRatedMovies(1).subscribe(res => {
       this.topRatedList = res.results;
     });
   }

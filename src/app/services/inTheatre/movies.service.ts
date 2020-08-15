@@ -21,7 +21,7 @@ export class MoviesService {
   }
 
   getNowPlaying(page: number): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}movie/now_playing?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
+    return this.httpClient.get(`${this.baseUrl}movie/now_playing?api_key=${this.apiKey}&page=${page}`);
   }
 
   searchMovies(searchStr: string): Observable<any> {
@@ -36,8 +36,8 @@ export class MoviesService {
     return this.httpClient.get(`${this.baseUrl}movie/upcoming?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
   }
 
-  getTopRatedMovies(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}movie/top_rated?api_key=${this.apiKey}`);
+  getTopRatedMovies(page): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}movie/top_rated?api_key=${this.apiKey}&page=${page}`);
   }
 
   getGenres(): Observable<any> {
@@ -46,6 +46,18 @@ export class MoviesService {
 
   getMoviesByGenre(id: string): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}genre/${id}/movies?api_key=${this.apiKey}`);
+  }
+
+  getGenresMovieList(): Observable<any> {
+    return this.httpClient.get(
+      `${this.baseUrl}genre/movie/list?api_key=${this.apiKey}&language=${this.language}`
+    );
+  }
+
+  getMoviesForGenre(genreId: number, page: number): Observable<any> {
+    return this.httpClient.get(
+      `${this.baseUrl}discover/movie?api_key=${this.apiKey}&language=${this.language}&with_genres=${genreId}&page=${page}`
+    );
   }
 
   getMovie(id: string): Observable<any> {

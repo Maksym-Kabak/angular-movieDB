@@ -20,6 +20,9 @@
 .mat-slider-horizontal {
   width: 100%;
 }
+mat-label {
+  font-size: 20px;
+}
 
 /* Large desktops and laptops */
 @media (min-width: 1200px) {

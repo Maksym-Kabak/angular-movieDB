@@ -1,0 +1,10 @@
+<ngx-loading [show]="isLoading"></ngx-loading>
+
+<ng-container *ngIf="!isLoading">
+  <div class='container mx-auto px-10  pt-5 pb-10' style="min-height: 495px;">
+    <ng-content></ng-content>
+    <p class="text-center py-10 text-pink-500 font-bold" *ngIf="!isEnd">Loading...</p>
+    <p class="text-center py-10 text-pink-500 font-bold" *ngIf="isEnd">No results more...</p>
+  </div>
+</ng-container>
+

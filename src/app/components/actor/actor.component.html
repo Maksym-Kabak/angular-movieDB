@@ -43,7 +43,7 @@
                 <div *ngIf="movies" class="similar-movies">
                   <div style="text-align:center;">
                   <span *ngFor="let movie of movies;">
-                    <app-poster-card [model]="movie" class="recommended-poster"></app-poster-card>
+                    <app-poster-card [movie]="movie" class="recommended-poster"></app-poster-card>
                   </span>
                   </div>
                 </div>

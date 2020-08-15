@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OnTvService} from '../../../services/onTv/on-tv.service';
 import {GenresListModel} from '../../../models/genres-list';
 import {PaginatorModel} from '../../../models/paginator.model';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-all-tv-shows',
@@ -9,7 +10,7 @@ import {PaginatorModel} from '../../../models/paginator.model';
   styleUrls: ['./all-tv-shows.component.css']
 })
 export class AllTvShowsComponent implements OnInit {
-
+  pageEvent: PageEvent;
   onTheAir: PaginatorModel[];
   genres: GenresListModel;
   isLoading = true;
@@ -28,6 +29,7 @@ export class AllTvShowsComponent implements OnInit {
       res => {
         this.totalResults = res.total_results;
         this.onTheAir = res.results;
+        console.log(res);
         if (!this.totalResults) {
           alert('Server Error');
         } else {
@@ -45,6 +47,7 @@ export class AllTvShowsComponent implements OnInit {
 
   changePage(event): void {
     this.getTvOnTheAir(event.pageIndex + 1);
+    console.log(event);
   }
 
 }

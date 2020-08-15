@@ -24,7 +24,7 @@
     <div fxFlex="75%">
       <div style="text-align: center" fxLayout='row wrap'>
       <span fxFlex="25%" fxFlex.md="25%" fxFlex.xs="50%" style="padding: 5px 5px;" *ngFor="let tvshow of onTheAir">
-        <app-poster-card [model]="tvshow"></app-poster-card>
+        <app-poster-card [movie]="tvshow" [isTv]="true"></app-poster-card>
       </span>
       </div>
       <mat-paginator [length]="totalResults"

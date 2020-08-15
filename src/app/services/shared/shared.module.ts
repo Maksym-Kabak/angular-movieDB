@@ -19,11 +19,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {RatingModule} from 'ng-starrating';
 import {PosterCardComponent} from '../../components/ui/poster-card/poster-card.component';
 import {RouterModule} from '@angular/router';
+import { MainContentWraperComponent } from './main-content-wraper/main-content-wraper.component';
+import {ngxLoadingAnimationTypes, NgxLoadingModule} from 'ngx-loading';
 
 
 
 @NgModule({
-  declarations: [PosterCardComponent],
+  declarations: [PosterCardComponent, MainContentWraperComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -43,7 +45,13 @@ import {RouterModule} from '@angular/router';
     FlexLayoutModule,
     LazyLoadImageModule,
     RatingModule,
-    RouterModule
+    RouterModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.circleSwish,
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)',
+      backdropBorderRadius: '2px',
+      primaryColour: '#C71585',
+    })
   ],
   exports: [
     CommonModule,
@@ -64,7 +72,9 @@ import {RouterModule} from '@angular/router';
     FlexLayoutModule,
     LazyLoadImageModule,
     RatingModule,
-    PosterCardComponent
+    NgxLoadingModule,
+    PosterCardComponent,
+    MainContentWraperComponent
   ]
 })
 export class SharedModule { }

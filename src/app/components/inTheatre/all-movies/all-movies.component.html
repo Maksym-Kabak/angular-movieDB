@@ -1,45 +1,49 @@
-<div *ngIf="nowPlaying">
-  <div class="container padding-top-60">
-    <h2 style="text-align: left; padding-left: 20px;">All Movies #NowPlaying</h2>
-    <mat-card class="filter-movies-card">
-      <div style="margin-bottom: 24px">Filter by</div>
-      <button mat-raised-button color="primary" aria-label="Set Now Playing filter">Now Playing</button>
-      <button mat-raised-button color="primary" aria-label="Set Upcoming filter" disabled>Upcoming</button>
-      <button mat-raised-button color="primary" aria-label="Set Popular filter" disabled>Popular</button>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Genres
-          </mat-panel-title>
-        </mat-expansion-panel-header>
+<div class="container padding-top-60">
+  <h2 style="text-align: left; padding-left: 20px;">All movie</h2>
+  <mat-card class="filter-movies-card">
+    <div style="margin-bottom: 24px">Filter by</div>
+<!--    <button mat-raised-button color="primary" aria-label="Set Now Playing filter" value="top" (change)="onGenreChange()">Top Rated</button>-->
+<!--    <button mat-raised-button color="primary" aria-label="Set Upcoming filter" (click)="onUpcoming()">Upcoming</button>-->
+<!--    <button mat-raised-button color="primary" aria-label="Set Popular filter" disabled>Popular</button>-->
+    <mat-form-field>
+      <mat-label>Genres</mat-label>
+      <mat-select (selectionChange)="onGenreChange()"  [(ngModel)]="genreValue">
+        <mat-option value="all">All Movie</mat-option>
+        <mat-option value="top">Top Rated</mat-option>
+        <mat-option value="trend">Popular</mat-option>
+        <mat-option [value]="genre.id" *ngFor="let genre of genres">{{genre.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
 
-        <div *ngFor="let genre of genres">
-          <button mat-raised-button color="primary" aria-label="Set Genres filter" disabled>
-            {{genre.name}}
-          </button>
-        </div>
-      </mat-expansion-panel>
-    </mat-card>
-
-
-    <div class="list-movies">
+  <app-main-content-wraper class="list-movies" [isLoading]="isLoading" [isEnd]="isEnd">
+    <div infiniteScroll [infiniteScrollDistance]="0" [infiniteScrollThrottle]="100"
+         (scrolled)="onScroll()">
       <div style="text-align: center">
-      <span *ngFor="let movie of nowPlaying">
-        <app-poster-card class="all-poster" [model]="movie"></app-poster-card>
+      <span *ngFor="let movie of movies">
+       <app-poster-card class="all-poster"
+                        [movie]=" movie"
+                        [movieGenre]="genreValue"
+                        [movies]="movies"
+                        [page]="page"
+       >
+      </app-poster-card>
       </span>
       </div>
-      <mat-paginator [length]="totalResults"
-                     [pageSize]="20"
-                     (page)="changePage($event)">
-      </mat-paginator>
     </div>
+  </app-main-content-wraper>
+  <!--    <mat-paginator-->
+  <!--      [length]="totalPage"-->
+  <!--      [pageSize]="20"-->
+  <!--      (page)="changePage($event)">-->
+  <!--    </mat-paginator>-->
+</div>
 
-  </div>
-</div>
-<div *ngIf="isLoading" style="margin-top: 30%">
-  <div class="loading">
-    <h4>Loading</h4>
-  </div>
-</div>
+
+<!--<div *ngIf="isLoading" style="margin-top: 30%">-->
+<!--  <div class="loading">-->
+<!--    <h4>Loading</h4>-->
+<!--  </div>-->
+<!--</div>-->
 
 

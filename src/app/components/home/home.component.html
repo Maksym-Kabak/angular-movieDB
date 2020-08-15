@@ -18,7 +18,7 @@
         <div class="swiper-container" [swiper]="config">
           <div class="swiper-wrapper">
             <div *ngFor="let movie of nowPlaying | slice:0:10" class="swiper-slide">
-              <app-poster-card [model]="movie" style="width: 100%"></app-poster-card>
+              <app-poster-card [movie]="movie" style="width: 100%"></app-poster-card>
             </div>
           </div>
           <div class="swiper-pagination" style=""></div>
@@ -31,7 +31,7 @@
           <div class="swiper-wrapper">
 
             <div *ngFor="let movie of upcomingList | slice:0:10" class="swiper-slide">
-              <app-poster-card [model]="movie"></app-poster-card>
+              <app-poster-card [movie]="movie"></app-poster-card>
             </div>
           </div>
           <div class="swiper-pagination"></div>
@@ -43,7 +43,7 @@
         <div class="swiper-container" [swiper]="config">
           <div class="swiper-wrapper">
             <div *ngFor="let movie of popularList | slice:0:10" class="swiper-slide">
-              <app-poster-card [model]="movie"></app-poster-card>
+              <app-poster-card [movie]="movie"></app-poster-card>
             </div>
           </div>
           <div class="swiper-pagination"></div>
@@ -68,7 +68,7 @@
         <div class="swiper-container" [swiper]="config">
           <div class="swiper-wrapper">
             <div *ngFor="let tvShow of onTheAir | slice:0:10" class="swiper-slide">
-              <app-poster-card [model]="tvShow"></app-poster-card>
+              <app-poster-card [movie]="tvShow"></app-poster-card>
             </div>
           </div>
           <div class="swiper-pagination"></div>
@@ -80,7 +80,7 @@
         <div class="swiper-container" [swiper]="config">
           <div class="swiper-wrapper">
             <div *ngFor="let tvShow of airingToday | slice:0:10" class="swiper-slide">
-              <app-poster-card [model]="tvShow"></app-poster-card>
+              <app-poster-card [movie]="tvShow"></app-poster-card>
             </div>
           </div>
           <div class="swiper-pagination"></div>
@@ -92,7 +92,7 @@
         <div class="swiper-container" [swiper]="config">
           <div class="swiper-wrapper">
             <div *ngFor="let tvShow of popularTvShows | slice:0:10" class="swiper-slide">
-              <app-poster-card [model]="tvShow"></app-poster-card>
+              <app-poster-card [movie]="tvShow"></app-poster-card>
             </div>
           </div>
           <div class="swiper-pagination"></div>

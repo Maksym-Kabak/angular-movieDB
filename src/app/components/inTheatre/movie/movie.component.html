@@ -64,7 +64,7 @@
       <h1>Recommended Movies</h1>
       <div style="text-align:center;">
         <span *ngFor="let movie of similarMovies;">
-          <app-poster-card [model]="movie" class="recommended-poster" ></app-poster-card>
+          <app-poster-card [movie]="movie" class="recommended-poster" ></app-poster-card>
         </span>
       </div>
     </div> <!--End Similar Movies-->
